@@ -5,6 +5,8 @@ set -eux
 
 HERE=$PWD
 
+find / -name 'cmake' -type f
+find / -name 'gcc*' -type f
 
 mkdir -v $HOME/bin
 for g in gcc g++ gcov gcc-ar gcc-nm gcc-ranlib
@@ -14,7 +16,7 @@ do
 done
 
 if [[ ! -x cmake/bin/cmake && -d cmake ]]; then
-    rm -fr cmake
+    rm -rf cmake
 fi
 if [[ ! -d cmake ]]; then
   CMAKE_URL="http://www.cmake.org/files/v3.5/cmake-3.5.2-Linux-x86_64.tar.gz"
