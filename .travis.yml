@@ -15,7 +15,12 @@ packages:
 #  - dlib/travis/before-install.sh
 
 script:
-  - dlib/travis/build_and_test.sh
+  - mkdir build
+  - cd build
+  - cmake --version
+  - cmake ../dlib/dlib/test
+  - cmake --build . --target dtest
+
 
 notifications:
   email:
