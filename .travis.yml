@@ -15,7 +15,7 @@ matrix:
         - GCC_VER=5
         - ADDRESS_MODEL=64
         - BUILD_SYSTEM=cmake
-        - PATH=$PWD/cmake/bin:$HOME/bin:$PATH
+        - PATH=$HOME/bin:$PWD/cmake/bin:$PATH
         - CMAKE_ROOT=$PWD/cmake/share/cmake-3.5
       addons: &ao_gcc5
         apt:
