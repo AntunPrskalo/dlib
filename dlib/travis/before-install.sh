@@ -5,8 +5,8 @@ set -eux
 
 HERE=$PWD
 
-find / -name 'cmake' -type f
-find / -name 'gcc*' -type f
+#find / -name 'cmake' -type f
+#find / -name 'gcc*' -type f
 
 mkdir -v $HOME/bin
 for g in gcc g++ gcov gcc-ar gcc-nm gcc-ranlib

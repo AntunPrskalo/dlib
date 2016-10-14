@@ -7,6 +7,6 @@ cmake --version
 
 mkdir build
 cd dlib
-../cmake/bin/cmake ../dlib/test
-../cmake/bin/cmake --build . --target dtest
+/usr/bin/cmake ../dlib/test
+/usr/bin/cmake --build . --target dtest
 dlib/test/dtest
