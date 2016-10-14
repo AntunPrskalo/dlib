@@ -10,13 +10,13 @@ packages: &gcc5_pkgs
 matrix:
   include:
     # GCC/Coverage/Autobahn
-    - compiler: gcc
+      compiler: gcc
       env:
         - GCC_VER=5
         - ADDRESS_MODEL=64
         - BUILD_SYSTEM=cmake
-        - PATH=$HOME/bin:$PWD/cmake/bin:$PATH
-        - CMAKE_ROOT=$PWD/cmake/share/cmake-3.5
+        - PATH=$HOME/bin:/usr/bin:$PATH
+        #- CMAKE_ROOT=$PWD/cmake/share/cmake-3.5
       addons: &ao_gcc5
         apt:
           sources: 
