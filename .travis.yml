@@ -8,9 +8,6 @@ env:
 packages: &gcc5_pkgs
   - gcc-5
   - g++-5
-  - python-software-properties
-  - libssl-dev
-  - libffi-dev
   - libstdc++6
   - binutils-gold
   # Provides a backtrace if the unittests crash
