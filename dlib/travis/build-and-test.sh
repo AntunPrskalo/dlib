@@ -15,7 +15,7 @@ if [ "$VARIANT" = "test" ]; then
   dlib/dtest/dtest --runall
 fi
 if [ "$VARIANT" = "examples" ]; then
-  ../cmake/bin/cmake ../examples
+  ../cmake/bin/cmake ../examples -DCMAKE_BUILD_TYPE=Release
   ../cmake/bin/cmake --build . -- -j 4
 fi
 
