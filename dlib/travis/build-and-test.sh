@@ -8,8 +8,7 @@ cd build
 if [ "$VARIANT" = "test" ]; then
   ../cmake/bin/cmake ../dlib/test -DCMAKE_BUILD_TYPE=Release
   ../cmake/bin/cmake --build . --target dtest -- -j 2
-  find . -name 'dtest'
-  dlib/dtest/dtest --runall
+  ./dtest --runall
 fi
 if [ "$VARIANT" = "examples" ]; then
   ../cmake/bin/cmake ../examples -DCMAKE_BUILD_TYPE=Release
