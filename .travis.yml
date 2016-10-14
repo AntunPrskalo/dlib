@@ -10,6 +10,7 @@ packages: &gcc5_pkgs
   - g++-5
   - libstdc++6
   - binutils-gold
+  - cmake
   # Provides a backtrace if the unittests crash
   - gdb
   # Needed for installing valgrind
