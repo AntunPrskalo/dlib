@@ -1,18 +1,32 @@
 language: cpp
 
-packages:
+packages: &gcc5_pkgs
   - gcc-5
   - g++-5
   - libstdc++6
-  - binutils-gold
-  - cmake
-
-#cache:
-#  directories:
+#  - binutils-gold
 #  - cmake
 
-#before_install:
-#  - dlib/travis/before-install.sh
+matrix:
+  include:
+    # GCC/Coverage/Autobahn
+    - compiler: gcc
+      env:
+        - GCC_VER=5
+        - ADDRESS_MODEL=64
+        - BUILD_SYSTEM=cmake
+        - PATH=$PWD/cmake/bin:$PATH
+      addons: &ao_gcc5
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: *gcc5_pkgs
+          
+cache:
+  directories:
+  - cmake
+
+before_install:
+  - dlib/travis/before-install.sh
 
 script:
   - mkdir build
