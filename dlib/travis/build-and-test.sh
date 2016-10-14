@@ -11,12 +11,12 @@ mkdir build
 cd build
 if [ "$VARIANT" = "test" ]; then
   ../cmake/bin/cmake ../dlib/test
-  ../cmake/bin/cmakee --build . --target dtest -- -j 4
+  ../cmake/bin/cmake --build . --target dtest -- -j 4
   dlib/dtest/dtest --runall
 fi
 if [ "$VARIANT" = "examples" ]; then
   ../cmake/bin/cmake ../examples
-  ../cmake/bin/cmakee --build . -- -j 4
+  ../cmake/bin/cmake --build . -- -j 4
 fi
 
 cd ..
