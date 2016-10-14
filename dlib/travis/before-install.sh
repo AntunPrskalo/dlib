@@ -18,7 +18,7 @@ if [[ ! -x cmake/bin/cmake && -d cmake ]]; then
 fi
 if [[ ! -d $PWD/cmake && ${BUILD_SYSTEM:-} == cmake ]]; then
   CMAKE_URL="http://www.cmake.org/files/v3.5/cmake-3.5.2-Linux-x86_64.tar.gz"
-  mkdir -v $HOME/cmake 
+  mkdir -v cmake 
   wget --no-check-certificate -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C cmake
   export CMAKE_ROOT=$PWD/cmake
 fi
