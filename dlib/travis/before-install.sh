@@ -5,6 +5,7 @@ set -eux
 
 HERE=$PWD
 
+export
 
 mkdir -v $HOME/bin
 for g in gcc g++ gcov gcc-ar gcc-nm gcc-ranlib
