@@ -25,6 +25,7 @@ matrix:
     - compiler: gcc
       env:
         - GCC_VER=5
+        - BUILD_SYSTEM=cmake
         - PATH=$PWD/cmake/bin:$PATH
       addons: &ao_gcc5
         apt:
