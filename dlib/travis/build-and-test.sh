@@ -2,21 +2,17 @@
 # Exit if anything fails.
 set -eux
 
-# check the version
-g++ --version
-cmake --version
-
 # build dlib and tests
 mkdir build
 cd build
 if [ "$VARIANT" = "test" ]; then
-  ../cmake/bin/cmake ../dlib/test
-  ../cmake/bin/cmake --build . --target dtest -- -j 4
+  ../cmake/bin/cmake ../dlib/test -DCMAKE_BUILD_TYPE=Release
+  ../cmake/bin/cmake --build . --target dtest -- -j 2
   dlib/dtest/dtest --runall
 fi
 if [ "$VARIANT" = "examples" ]; then
   ../cmake/bin/cmake ../examples -DCMAKE_BUILD_TYPE=Release
-  ../cmake/bin/cmake --build . -- -j 4
+  ../cmake/bin/cmake --build . -- -j 2
 fi
 
 cd ..
