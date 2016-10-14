@@ -4,23 +4,31 @@ packages: &gcc5_pkgs
   - gcc-5
   - g++-5
   - libstdc++6
-  - cmake
-#  - binutils-gold
 
 matrix:
   include:
-    # GCC/Coverage/Autobahn
-      compiler: gcc
+    # build and run all tests
+    - compiler: gcc
       env:
         - GCC_VER=5
         - ADDRESS_MODEL=64
         - BUILD_SYSTEM=cmake
         - PATH=$HOME/bin:$PATH
+        - VARIANT=test
       addons: &ao_gcc5
         apt:
           sources: 
             - ubuntu-toolchain-r-test
           packages: *gcc5_pkgs
+    # build all examples
+    - compiler: gcc
+      env:
+        - GCC_VER=5
+        - ADDRESS_MODEL=64
+        - BUILD_SYSTEM=cmake
+        - PATH=$HOME/bin:$PATH
+        - VARIANT=examples
+      addons: *ao_gcc5
           
 cache:
   directories:
@@ -28,6 +36,10 @@ cache:
 
 before_install:
   - dlib/travis/before-install.sh
+
+install:
+    - if [ "$CXX" = "g++" ]; then export CXX="g++-$GCC_VER" CC="gcc-$GCC_VER"; fi
+    - if [ "$CXX" = "clang++" ]; then export CXX="clang++-$CLANG_VER" CC="clang-$CLANG_VER"; fi
 
 script:
   - dlib/travis/build-and-test.sh

@@ -3,18 +3,7 @@
 # Exit if anything fails.
 set -eux
 
-HERE=$PWD
-
-#find / -name 'cmake' -type f
-#find / -name 'gcc*' -type f
-
-mkdir -v $HOME/bin
-for g in gcc g++ gcov gcc-ar gcc-nm gcc-ranlib
-do
-  test -x $( type -p ${g}-$GCC_VER )
-  ln -sv $(type -p ${g}-$GCC_VER) $HOME/bin/${g}
-done
-
+## download CMAKE 3.5 to get colored output
 if [[ ! -x cmake/bin/cmake && -d cmake ]]; then
     rm -rf cmake
 fi
@@ -24,6 +13,5 @@ if [[ ! -d cmake ]]; then
   wget --no-check-certificate -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C cmake
 fi
 
-ls cmake
 
 
