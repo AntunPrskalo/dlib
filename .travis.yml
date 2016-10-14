@@ -38,8 +38,8 @@ before_install:
   - dlib/travis/before-install.sh
 
 install:
-    - if [ "$CXX" = "g++" ]; then export CXX="g++-$GCC_VER" CC="gcc-$GCC_VER"; fi
-    - if [ "$CXX" = "clang++" ]; then export CXX="clang++-$CLANG_VER" CC="clang-$CLANG_VER"; fi
+    - if [ "$CXX" == "g++" ]; then export CXX=g++-$GCC_VER; export CC=gcc-$GCC_VER; fi
+    - if [ "$CXX" == "clang++" ]; then export CXX=clang++-$CLANG_VER; export CC=clang-$CLANG_VER; fi
 
 script:
   - dlib/travis/build-and-test.sh
