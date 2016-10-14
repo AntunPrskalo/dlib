@@ -3,7 +3,7 @@
 # Exit if anything fails.
 set -eux
 
-HERE=$PW
+HERE=$PWD
 
 
 mkdir -v $HOME/bin

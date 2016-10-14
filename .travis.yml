@@ -30,12 +30,7 @@ before_install:
   - dlib/travis/before-install.sh
 
 script:
-  - gcc --version
-  - mkdir build
-  - cd build
-  - cmake --version
-  - cmake ../dlib/test
-  - cmake --build . --target dtest
+  - dlib/travis/build-and-test.sh
 
 
 notifications:
