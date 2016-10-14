@@ -2,9 +2,8 @@
 # Exit if anything fails.
 set -eux
 
-# check versions
+g++ --version
 cmake --version
-gcc --version
 
 mkdir build
 cd dlib
