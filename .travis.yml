@@ -69,7 +69,7 @@ cache:
 #  - dlib/travis/before_install.sh
 
 script:
-  - dlib/travis/build_and_test.sh
+  - e-fominov/dlibdlib/travis/build_and_test.sh
 
 notifications:
   email:
