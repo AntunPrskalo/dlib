@@ -1,6 +1,6 @@
 language: cpp
 
-packages
+packages:
   - gcc-5
   - g++-5
   - libstdc++6
