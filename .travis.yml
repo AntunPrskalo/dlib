@@ -29,6 +29,7 @@ before_install:
   - dlib/travis/before-install.sh
 
 script:
+  - gcc --version
   - mkdir build
   - cd build
   - cmake --version
