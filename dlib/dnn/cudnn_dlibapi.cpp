@@ -1477,18 +1477,13 @@ namespace dlib
 
         void cudnn_shared_workspace::set_size(size_t _size)
         {
-            size = _size;
-            if (size > reserved_size())
-            {
-                if (ptr)
-                    release_cuda_ptr(ptr.get());
-                reserve(size);
-                // reallocate for changed size
-                if (ptr)
-                    allocate();
-            }
-            if (!size)
+            if (ptr)
                 ptr.reset();
+ 
+            size = _size;
+
+            if (size)
+                reserve(size);
         }
 
         void *cudnn_shared_workspace::get()
@@ -1512,13 +1507,22 @@ namespace dlib
         std::shared_ptr<void *> cudnn_shared_workspace::allocate()
         {
             thread_local std::weak_ptr<void*> data;
+            thread_local size_t allocated_size = 0;
+
             std::shared_ptr<void*> allocated = data.lock();
-            if (!allocated && reserved_size())
+            if (allocated && reserved_size() > allocated_size)
+            {
+                CHECK_CUDA(cudaFree(*allocated.get()));
+                CHECK_CUDA(cudaMalloc(allocated.get(), reserved_size()));
+                allocated_size = reserved_size();
+            }
+            else if (!allocated && reserved_size())
             {
                 void** ptr = new void*;
                 CHECK_CUDA(cudaMalloc(ptr, reserved_size()));
                 allocated = std::shared_ptr<void*>(ptr, release_cuda_ptr);
                 data = allocated;
+                allocated_size = reserved_size();
             }
             return allocated;
         }
@@ -1527,7 +1531,7 @@ namespace dlib
         {
             if (ptr && *ptr)
             {
-                cudaFree(*ptr);
+                CHECK_CUDA(cudaFree(*ptr));
                 *ptr = nullptr;
                 delete ptr;
             }
